@@ -9,3 +9,20 @@ if [ $HOSTNAME != "localhost.localdomain" ]; then
    exit 1
 fi
 
+BUILD_DIR=QtBuild
+QMAKE=/usr/bin/qmake-qt5
+PROJECT_DIR=/home/cchao/SquareOne
+
+if [[ ! -d "$BUILD_DIR" ]]; then
+   mkdir -m775 $BUILD_DIR
+fi
+
+ls
+
+cd $BUILD_DIR
+$QMAKE $PROJECT_DIR
+make
+ls
+
+echo "Ending Executing $0"
+
