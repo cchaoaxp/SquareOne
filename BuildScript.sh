@@ -11,7 +11,7 @@ fi
 
 BUILD_DIR=QtBuild
 QMAKE=/usr/bin/qmake-qt5
-PROJECT_DIR=/home/cchao/SquareOne
+PROJECT_DIR=/home/cchao/SquareOne/SPOF
 
 if [[ ! -d "$BUILD_DIR" ]]; then
    mkdir -m775 $BUILD_DIR
@@ -21,6 +21,9 @@ ls
 
 cd $BUILD_DIR
 pwd
+echo "in QtBuild ?"
+
+ls
 $QMAKE $PROJECT_DIR
 make
 ls
