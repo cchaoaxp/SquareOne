@@ -18,7 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 INCLUDEPATH += $$PWD/../../guiLib \
-               $$PWD/../../build-guiLib-Desktop_Qt_5_14_1_MinGW_64_bit-Debug
+               $$PWD/../../build-guiLib-Desktop-Debug
 
 DEPENDPATH += $${INCLUDEPATH}
 
@@ -34,8 +34,10 @@ unix {
 }
 !isEmpty(target.path): INSTALLS += target
 
-win32: LIBS += -L$$PWD/../../build-guiLib-Desktop_Qt_5_14_1_MinGW_64_bit-Debug/ -lguiLib
 
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../../build-guiLib-Desktop_Qt_5_14_1_MinGW_64_bit-Debug/guiLib.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/../../build-guiLib-Desktop_Qt_5_14_1_MinGW_64_bit-Debug/libguiLib.a
+unix:!macx: LIBS += -L$$OUT_PWD/./ -lSetTimeOfDayController
 
+INCLUDEPATH += $$PWD/../../build-guiLib-Desktop-Debug
+DEPENDPATH += $$PWD/../../build-guiLib-Desktop-Debug
+
+unix:!macx: PRE_TARGETDEPS += $$OUT_PWD/./libSetTimeOfDayController.a

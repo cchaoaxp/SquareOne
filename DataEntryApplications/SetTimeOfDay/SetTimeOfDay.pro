@@ -16,9 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 INCLUDEPATH += $$PWD/../../lib/guiLib \
-               $$PWD/../../lib/build-guiLib-Desktop_Qt_5_14_1_MinGW_64_bit-Debug \
-               $$PWD/../../lib/appControllers/SetTimeOfDayController \
-               $$PWD/../../lib/appControllers/build-SetTimeOfDayController-Desktop_Qt_5_14_1_MinGW_64_bit-Debug
+               $$PWD/../../lib/appControllers/SetTimeOfDayController
 
 DEPENDPATH += $${INCLUDEPATH}
 
@@ -32,18 +30,16 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32: LIBS += -L$$PWD/../../lib/appControllers/build-SetTimeOfDayController-Desktop_Qt_5_14_1_MinGW_64_bit-Debug/ -lSetTimeOfDayController
+unix:!macx: LIBS += -L$$PWD/../../lib/appControllers/build-SetTimeOfDayController-Desktop-Debug/ -lSetTimeOfDayController
 
-INCLUDEPATH += $$PWD/../../lib/appControllers/build-SetTimeOfDayController-Desktop_Qt_5_14_1_MinGW_64_bit-Debug
-DEPENDPATH += $$PWD/../../lib/appControllers/build-SetTimeOfDayController-Desktop_Qt_5_14_1_MinGW_64_bit-Debug
+INCLUDEPATH += $$PWD/../../lib/appControllers/build-SetTimeOfDayController-Desktop-Debug
+DEPENDPATH += $$PWD/../../lib/appControllers/build-SetTimeOfDayController-Desktop-Debug
 
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../../lib/appControllers/build-SetTimeOfDayController-Desktop_Qt_5_14_1_MinGW_64_bit-Debug/SetTimeOfDayController.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/../../lib/appControllers/build-SetTimeOfDayController-Desktop_Qt_5_14_1_MinGW_64_bit-Debug/libSetTimeOfDayController.a
+unix:!macx: PRE_TARGETDEPS += $$PWD/../../lib/appControllers/build-SetTimeOfDayController-Desktop-Debug/libSetTimeOfDayController.a
 
-win32: LIBS += -L$$PWD/../../lib/build-guiLib-Desktop_Qt_5_14_1_MinGW_64_bit-Debug/ -lguiLib
+unix:!macx: LIBS += -L$$PWD/../../lib/build-guiLib-Desktop-Debug/ -lguiLib
 
-INCLUDEPATH += $$PWD/../../lib/build-guiLib-Desktop_Qt_5_14_1_MinGW_64_bit-Debug
-DEPENDPATH += $$PWD/../../lib/build-guiLib-Desktop_Qt_5_14_1_MinGW_64_bit-Debug
+INCLUDEPATH += $$PWD/../../lib/build-guiLib-Desktop-Debug
+DEPENDPATH += $$PWD/../../lib/build-guiLib-Desktop-Debug
 
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../../lib/build-guiLib-Desktop_Qt_5_14_1_MinGW_64_bit-Debug/guiLib.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/../../lib/build-guiLib-Desktop_Qt_5_14_1_MinGW_64_bit-Debug/libguiLib.a
+unix:!macx: PRE_TARGETDEPS += $$PWD/../../lib/build-guiLib-Desktop-Debug/libguiLib.a
