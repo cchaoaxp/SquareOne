@@ -11,7 +11,7 @@ fi
 
 BUILD_DIR=QtBuild
 QMAKE=/usr/bin/qmake-qt5
-PROJECT_DIR=/home/cchao/SquareOne/SPOF
+PROJECT_DIR=../SPOF
 
 if [[ ! -d "$BUILD_DIR" ]]; then
    mkdir -m775 $BUILD_DIR
