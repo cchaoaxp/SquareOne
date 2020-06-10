@@ -2,8 +2,9 @@
 
 ls
 echo "Executing $0"
+echo "hostname is $HOSTNAME"
 
-if [[!"hostname"="localhost.localdomain"]]; then
+if [ $HOSTNAME != "local.localDomain" ]; then
    echo "No match"
    exit 1
 fi
