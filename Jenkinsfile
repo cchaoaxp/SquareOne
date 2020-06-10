@@ -4,6 +4,7 @@ pipeline {
     stage('QtBuild') {
       steps {
         sh '''echo "Path $0"
+ls
 cd ..
 ls'''
       }
