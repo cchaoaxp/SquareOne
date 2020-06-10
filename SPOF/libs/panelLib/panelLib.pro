@@ -1,8 +1,7 @@
-QT += widgets gui
-
+QT += widgets core gui
 
 TEMPLATE = lib
-CONFIG += staticlib
+CONFIG += staticlib debug
 
 CONFIG += c++11
 
@@ -17,16 +16,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-INCLUDEPATH += $$PWD/../../guiLib \
-               $$PWD/../../build-guiLib-Desktop-Debug
-
-DEPENDPATH += $${INCLUDEPATH}
-
 SOURCES += \
-    SetTimeOfDayController.cpp
+    CutomizeCalendar.cpp \
+    SelectionItems.cpp \
+    TaskSummary.cpp \
+    WidgetsView.cpp
 
 HEADERS += \
-    SetTimeOfDayController.h
+    CutomizeCalendar.h \
+    SelectionItems.h \
+    TaskSummary.h \
+    WidgetsView.h
 
 # Default rules for deployment.
 unix {
@@ -34,10 +34,8 @@ unix {
 }
 !isEmpty(target.path): INSTALLS += target
 
-
-unix:!macx: LIBS += -L$$OUT_PWD/./ -lSetTimeOfDayController
-
-INCLUDEPATH += $$PWD/../../build-guiLib-Desktop-Debug
-DEPENDPATH += $$PWD/../../build-guiLib-Desktop-Debug
-
-unix:!macx: PRE_TARGETDEPS += $$OUT_PWD/./libSetTimeOfDayController.a
+FORMS += \
+    CutomizeCalendar.ui \
+    SelectionItems.ui \
+    TaskSummary.ui \
+    WidgetsView.ui

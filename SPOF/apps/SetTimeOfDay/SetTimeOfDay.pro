@@ -15,8 +15,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-INCLUDEPATH += $$PWD/../../lib/guiLib \
-               $$PWD/../../lib/appControllers/SetTimeOfDayController
+INCLUDEPATH += $$PWD/../../libs/panelLib \
+               $$PWD/../SetTimeOfDayControllerLib
 
 DEPENDPATH += $${INCLUDEPATH}
 
@@ -30,16 +30,16 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-unix:!macx: LIBS += -L$$PWD/../../lib/appControllers/build-SetTimeOfDayController-Desktop-Debug/ -lSetTimeOfDayController
+unix:!macx: LIBS += -L$$PWD/../../../build-SPOF-Desktop-Debug/apps/SetTimeOfDayControllerLib/ -lSetTimeOfDayControllerLib
 
-INCLUDEPATH += $$PWD/../../lib/appControllers/build-SetTimeOfDayController-Desktop-Debug
-DEPENDPATH += $$PWD/../../lib/appControllers/build-SetTimeOfDayController-Desktop-Debug
+INCLUDEPATH += $$PWD/../../../build-SPOF-Desktop-Debug/apps/SetTimeOfDayControllerLib
+DEPENDPATH += $$PWD/../../../build-SPOF-Desktop-Debug/apps/SetTimeOfDayControllerLib
 
-unix:!macx: PRE_TARGETDEPS += $$PWD/../../lib/appControllers/build-SetTimeOfDayController-Desktop-Debug/libSetTimeOfDayController.a
+unix:!macx: PRE_TARGETDEPS += $$PWD/../../../build-SPOF-Desktop-Debug/apps/SetTimeOfDayControllerLib/libSetTimeOfDayControllerLib.a
 
-unix:!macx: LIBS += -L$$PWD/../../lib/build-guiLib-Desktop-Debug/ -lguiLib
+unix:!macx: LIBS += -L$$PWD/../../../build-SPOF-Desktop-Debug/libs/panelLib/ -lpanelLib
 
-INCLUDEPATH += $$PWD/../../lib/build-guiLib-Desktop-Debug
-DEPENDPATH += $$PWD/../../lib/build-guiLib-Desktop-Debug
+INCLUDEPATH += $$PWD/../../../build-SPOF-Desktop-Debug/libs/panelLib
+DEPENDPATH += $$PWD/../../../build-SPOF-Desktop-Debug/libs/panelLib
 
-unix:!macx: PRE_TARGETDEPS += $$PWD/../../lib/build-guiLib-Desktop-Debug/libguiLib.a
+unix:!macx: PRE_TARGETDEPS += $$PWD/../../../build-SPOF-Desktop-Debug/libs/panelLib/libpanelLib.a

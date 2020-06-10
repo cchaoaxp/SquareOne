@@ -1,41 +1,41 @@
-#include "SetTimeOfDayController.h"
+#include "SetTimeOfDayControllerLib.h"
 #include <QApplication>
 
-SetTimeOfDayController::SetTimeOfDayController()
+SetTimeOfDayControllerLib::SetTimeOfDayControllerLib()
 {
    taskSummary   = nullptr;
    dataSelection = nullptr;
    current       = nullptr;
 }
 
-void SetTimeOfDayController::start()
+void SetTimeOfDayControllerLib::start()
 {
    taskSummary = new TaskSummary();
    QObject::connect( taskSummary->getYes(), &QPushButton::clicked, this,
-                     &SetTimeOfDayController::showDataSelection );
+                     &SetTimeOfDayControllerLib::showDataSelection );
    showNext( taskSummary );
 }
 
-void SetTimeOfDayController::showDataSelection()
+void SetTimeOfDayControllerLib::showDataSelection()
 {
    dataSelection = new SelectionItems();
    QObject::connect( dataSelection->getOk(), &QPushButton::clicked, this,
-                     &SetTimeOfDayController::showCutomizeCalendar );
+                     &SetTimeOfDayControllerLib::showCutomizeCalendar );
    showNext( dataSelection );
 }
 
-void SetTimeOfDayController::showCutomizeCalendar()
+void SetTimeOfDayControllerLib::showCutomizeCalendar()
 {
    QDate minDate;
    minDate.setDate( 1900, 1, 1 );
    calendar = new CutomizeCalendar();
    //   calendar = new CutomizeCalendar(nullptr, &minDate, nullptr);
    QObject::connect( calendar->getOk(), &QPushButton::clicked, this,
-                     &SetTimeOfDayController::showListWidgets );
+                     &SetTimeOfDayControllerLib::showListWidgets );
    showNext( calendar );
 }
 
-void SetTimeOfDayController::showListWidgets()
+void SetTimeOfDayControllerLib::showListWidgets()
 {
    widgetsView = new WidgetsView();
    QObject::connect( widgetsView->getOk(), &QPushButton::clicked,
@@ -43,7 +43,7 @@ void SetTimeOfDayController::showListWidgets()
    showNext( widgetsView );
 }
 
-void SetTimeOfDayController::showNext( QWidget *w )
+void SetTimeOfDayControllerLib::showNext( QWidget *w )
 {
    Qt::WindowFlags flags;
    flags = Qt::Window | Qt::FramelessWindowHint;

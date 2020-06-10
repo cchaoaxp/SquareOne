@@ -20,6 +20,7 @@ fi
 ls
 
 cd $BUILD_DIR
+pwd
 $QMAKE $PROJECT_DIR
 make
 ls

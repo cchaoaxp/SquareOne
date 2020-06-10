@@ -1,7 +1,7 @@
-QT += widgets core gui
+QT += widgets gui
 
 TEMPLATE = lib
-CONFIG += staticlib
+CONFIG += staticlib debug
 
 CONFIG += c++11
 
@@ -16,17 +16,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+INCLUDEPATH += $$PWD/../../libs/panelLib
+
+DEPENDPATH += $${INCLUDEPATH}
+
 SOURCES += \
-    CutomizeCalendar.cpp \
-    SelectionItems.cpp \
-    TaskSummary.cpp \
-    WidgetsView.cpp
+    SetTimeOfDayControllerLib.cpp
 
 HEADERS += \
-    CutomizeCalendar.h \
-    SelectionItems.h \
-    TaskSummary.h \
-    WidgetsView.h
+    SetTimeOfDayControllerLib.h
 
 # Default rules for deployment.
 unix {
@@ -34,8 +32,9 @@ unix {
 }
 !isEmpty(target.path): INSTALLS += target
 
-FORMS += \
-   CutomizeCalendar.ui \
-   SelectionItems.ui \
-   TaskSummary.ui \
-   WidgetsView.ui
+unix:!macx: LIBS += -L$$PWD/../../../build-SPOF-Desktop-Debug/libs/panelLib/ -lpanelLib
+
+INCLUDEPATH += $$PWD/../../../build-SPOF-Desktop-Debug/libs/panelLib
+DEPENDPATH += $$PWD/../../../build-SPOF-Desktop-Debug/libs/panelLib
+
+unix:!macx: PRE_TARGETDEPS += $$PWD/../../../build-SPOF-Desktop-Debug/libs/panelLib/libpanelLib.a
