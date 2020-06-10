@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('QtBuild') {
       steps {
-        sh './BuildScript'
+        sh 'echo "Path %0"'
       }
     }
 
