@@ -1,5 +1,10 @@
 #!/bin/bash
 
-echo "hello world!"
+ls
 echo "Executing $0"
-echo "end"
+
+if [[ !"hostname"="localhost.localdomain"]] then
+   echo "No match"
+   exit 1
+fi
+
