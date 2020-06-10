@@ -5,7 +5,7 @@ pipeline {
       steps {
         sh '''echo "Path $0"
 ls
-./BuildScript'''
+./BuildScript.sh'''
       }
     }
 
